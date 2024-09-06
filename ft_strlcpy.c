@@ -1,4 +1,4 @@
-char ft_strlcpy(char *dst, const char *src, unsigned int size);
+char ft_strlcpy(char *dst, const char *src, unsigned int size)
 {
     unsigned int i;
 
@@ -8,6 +8,6 @@ char ft_strlcpy(char *dst, const char *src, unsigned int size);
         dst[i] = src[i];
         i++;
     }
-    dest[i] = '\0';
-    return (dest);
+    dst[i] = '\0';
+    return (dst);
 }
