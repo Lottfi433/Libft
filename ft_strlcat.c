@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <string.h>
+
 int ft_strlen (char *str)
 {
     int i;
@@ -10,16 +13,16 @@ int ft_strlen (char *str)
     return (i);
 }
 
-int ft_strlcat(char *dst, const char *src, unsigned size)
+int ft_strlcat(char *dst, const char *src, size_t size)
 {
-    unsigned int ss;
-    unsigned int ds;
-    unsigned int r;
-    unsigned int i;
+    size_t ss;
+    size_t ds;
+    size_t r;
+    size_t i;
 
 
     r = 0 ;
-    ss = ft_strlen(src);
+    ss = ft_strlen((char *)src);
     ds = ft_strlen(dst);
 
     if (ds < size)
@@ -38,4 +41,10 @@ int ft_strlcat(char *dst, const char *src, unsigned size)
     }
     dst[ds + i] = '\0';
     return (r);
+}
+int main ()
+{
+    char a[256];
+    int d = strlcat(a,NULL,4);
+    printf("%d",d);
 }
