@@ -12,11 +12,10 @@ void *memcpy(void *dest, const void *src, size_t n)
     size_t  i;
 
     i = 0;
-    while (ss[i] != '\0' && i < n)
+    while (i < n)
     {
         ds[i] = ss[i];
         i++;
     }
-    ds[i] = '\0';
     return ((void *)ds);
 }
