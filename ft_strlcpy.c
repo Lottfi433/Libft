@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yazlaigi <yazlaigi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 11:56:57 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/10/22 12:52:46 by yazlaigi         ###   ########.fr       */
+/*   Created: 2024/10/24 08:09:19 by yazlaigi          #+#    #+#             */
+/*   Updated: 2024/10/30 09:39:32 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
-{
-	int	i;
+#include "libft.h"
 
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	j;
+	size_t	i;
+
+	j = 0;
 	i = 0;
-	while (s[i] != '\0')
+	while (src[i] != '\0')
 	{
-		if (s[i] == (char)c)
-		{
-			return ((char *)&s[i]);
-		}
 		i++;
 	}
-	if (c == '\0')
+	if (size > 0)
 	{
-		return ((char *)&s[i]);
+		while (src[j] != '\0' && j < size - 1)
+		{
+			dst[j] = src[j];
+			j++;
+		}
+		dst[j] = '\0';
 	}
-	return (NULL);
+	return (i);
 }

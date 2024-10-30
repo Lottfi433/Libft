@@ -1,35 +1,50 @@
-char    *ft_substr(char const *s, unsigned int start,size_t len)
-{
-    char    *a;
-    int     s_len;
-    unsigned int i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/26 12:16:37 by yazlaigi          #+#    #+#             */
+/*   Updated: 2024/10/30 09:39:57 by yazlaigi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-    s_len = ft_strlen(s);
-    if (start >= s_len)
-    {
-        a = malloc(1);
-        if (a == NULL)
-        {
-            return (NULL);
-        }
-        a[0] = '\0';
-        return (a);
-    }
-    else
-    {
-        len = s_len - start;
-        a = malloc (sizeof(char) * len + 1);
-        if (a == NULL)
-        {
-            return (NULL);
-        }
-        i = 0;
-        while (s[start + i] != '\0' && start + i < len)
-        {
-            a[i] = s[start + i];
-            i++;
-        }
-        a[i] = '\0';
-        return (a);
-    }
+#include "libft.h"
+
+char	*allocatenewstring(void)
+{
+	char	*a;
+
+	a = malloc(1);
+	if (a == NULL)
+		return (NULL);
+	a[0] = '\0';
+	return (a);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	unsigned int	i;
+	size_t			s_len;
+	char			*a;
+
+	s_len = ft_strlen(s);
+	i = 0;
+	if (start >= s_len)
+	{
+		return (allocatenewstring());
+	}
+	if (len > s_len - start)
+		len = s_len - start;
+	a = malloc(len + 1);
+	if (a == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		a[i] = s[start + i];
+		i++;
+	}
+	a[i] = '\0';
+	return (a);
 }

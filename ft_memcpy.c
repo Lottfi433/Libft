@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yazlaigi <yazlaigi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 17:11:53 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/10/22 10:39:07 by yazlaigi         ###   ########.fr       */
+/*   Created: 2024/10/23 11:58:02 by yazlaigi          #+#    #+#             */
+/*   Updated: 2024/10/30 09:38:54 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90))
+	size_t			i;
+	unsigned char	*srs;
+	unsigned char	*dst;
+
+	srs = (unsigned char *)src;
+	dst = (unsigned char *)dest;
+	i = 0;
+	while (i < n)
 	{
-		return (1);
+		dst[i] = srs[i];
+		i++;
 	}
-	else
-	{
-		return (0);
-	}
+	return ((void *)dst);
 }

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yazlaigi <yazlaigi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 13:16:09 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/10/22 13:34:03 by yazlaigi         ###   ########.fr       */
+/*   Created: 2024/10/22 11:10:58 by yazlaigi          #+#    #+#             */
+/*   Updated: 2024/10/30 09:38:18 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, size_t n)
-{
-	unsigned char	*str;
-	size_t			i;
+#include "libft.h"
 
-	i = 0;
-	str = (unsigned char *)s;
-	while (i < n)
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
 	{
-		if (str[i] == (unsigned char)c)
-		{
-			return ((void *)&str[i]);
-		}
-		i++;
+		return (1);
 	}
-	return (NULL);
+	else
+	{
+		return (0);
+	}
 }

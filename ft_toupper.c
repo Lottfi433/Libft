@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yazlaigi <yazlaigi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 12:36:04 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/10/22 12:54:52 by yazlaigi         ###   ########.fr       */
+/*   Created: 2024/10/22 11:39:13 by yazlaigi          #+#    #+#             */
+/*   Updated: 2024/10/30 09:40:03 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
-{
-	int	i;
+#include "libft.h"
 
-	i = 0;
-	while (s[i] != '\0')
+int	ft_toupper(int c)
+{
+	if (c >= 'a' && c <= 'z')
 	{
-		i++;
+		c = c - 32;
 	}
-	if (c == '\0')
-	{
-		return ((char *)&s[i]);
-	}
-	while (i > 0)
-	{
-		if (s[i - 1] == (char)c)
-		{
-			return ((char *)&s[i - 1]);
-		}
-		i--;
-	}
-	return (NULL);
+	return (c);
 }

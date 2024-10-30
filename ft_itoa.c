@@ -1,42 +1,56 @@
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/29 12:18:31 by yazlaigi          #+#    #+#             */
+/*   Updated: 2024/10/30 14:27:29 by yazlaigi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_integerlen(int n)
+#include "libft.h"
+
+size_t	numberlen(int number)
 {
-	int	count;
+	size_t	count;
 
-	if (n <= 0)
+	if (number <= 0)
 		count = 1;
 	else
 		count = 0;
-	while (n)
+	while (number != 0)
 	{
+		number /= 10;
 		count++;
-		n /= 10;
 	}
 	return (count);
 }
 
 char	*ft_itoa(int n)
 {
+	long	number;
+	size_t	num_len;
 	char	*a;
-	int		n_len;
-	long	num;
 
-	num = n;
-	n_len = ft_integerlen(num);
-	a = malloc(n_len + 1);
-	if (!a)
+	number = n;
+	num_len = numberlen(number);
+	a = malloc (num_len + 1);
+	if (a == NULL)
 		return (NULL);
-	a[n_len] = '\0';
-	if (num == 0)
+	a[num_len] = '\0';
+	if (number < 0)
 	{
-		a[0] = '0';
+		a[0] = '-';
+		number = number * -1;
 	}
-	while (num > 0)
+	if (number == 0)
+		a[0] = '0';
+	while (number != 0)
 	{
-		a[--n_len] = (num % 10) + '0';
-		num = num / 10;
+		a[--num_len] = (number % 10) + '0';
+		number = number / 10;
 	}
 	return (a);
 }

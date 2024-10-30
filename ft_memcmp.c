@@ -1,46 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 09:56:21 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/10/25 13:02:10 by yazlaigi         ###   ########.fr       */
+/*   Created: 2024/10/22 14:27:13 by yazlaigi          #+#    #+#             */
+/*   Updated: 2024/10/30 09:38:43 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char	*b;
-	size_t			i;
+	const unsigned char	*fs;
+	const unsigned char	*ss;
+	size_t				i;
 
+	if (n == 0)
+	{
+		return (0);
+	}
+	fs = (const unsigned char *)s1;
+	ss = (const unsigned char *)s2;
 	i = 0;
-	b = (unsigned char *)s;
 	while (i < n)
 	{
-		b[i] = (unsigned char)c;
+		if (fs[i] != ss[i])
+		{
+			return (fs[i] - ss[i]);
+		}
 		i++;
 	}
-	return (s);
-}
-
-int main()
-{
-	int	x = 0;
-	int i = 0;
-	char *ptr;
-
-	ptr = (char *)&x;
-	while (i <= 4)
-	{
-		ptr[i] = 0;
-		i++;
-	}
-	i = 0;
-	ft_memset(&ptr[i], 39, 1);
-	ft_memset(&ptr[i + 1], 05, 1);
-	printf ("%d",x);
+	return (0);
 }
