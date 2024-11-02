@@ -6,7 +6,7 @@
 /*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 08:47:56 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/10/31 10:39:54 by yazlaigi         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:44:28 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 	char			*a;
 
+	if (s == NULL)
+		return (NULL);
 	s_len = ft_strlen(s);
 	a = malloc(s_len + 1);
 	if (!a)

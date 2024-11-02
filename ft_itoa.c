@@ -6,13 +6,13 @@
 /*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:18:31 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/10/30 14:27:29 by yazlaigi         ###   ########.fr       */
+/*   Updated: 2024/11/01 15:17:29 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	numberlen(int number)
+static size_t	numberlen(int number)
 {
 	size_t	count;
 

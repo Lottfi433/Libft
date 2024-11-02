@@ -6,7 +6,7 @@
 /*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 07:59:12 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/10/30 09:39:43 by yazlaigi         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:50:13 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	j;
 
 	i = 0;
+	if (haystack == NULL && len == 0)
+		return (NULL);
 	if (needle[i] == '\0')
 	{
 		return ((char *)haystack);

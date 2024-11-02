@@ -6,13 +6,13 @@
 /*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:16:37 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/10/30 09:39:57 by yazlaigi         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:41:19 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*allocatenewstring(void)
+static char	*allocatenewstring(void)
 {
 	char	*a;
 
@@ -29,6 +29,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t			s_len;
 	char			*a;
 
+	if (s == NULL)
+		return (NULL);
 	s_len = ft_strlen(s);
 	i = 0;
 	if (start >= s_len)

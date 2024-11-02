@@ -6,13 +6,13 @@
 /*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:44:30 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/10/31 09:58:20 by yazlaigi         ###   ########.fr       */
+/*   Updated: 2024/11/01 15:16:50 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*allocation(size_t	t_len)
+static char	*allocation(size_t	t_len)
 {
 	char	*a;
 

@@ -6,13 +6,13 @@
 /*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 09:48:21 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/10/30 09:39:24 by yazlaigi         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:42:52 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*yass_cpy(char *a, const char *s1, const char *s2)
+static char	*yass_cpy(char *a, const char *s1, const char *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -43,6 +43,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	t_len;
 	char	*a;
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	t_len = s1_len + s2_len;

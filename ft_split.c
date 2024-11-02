@@ -5,81 +5,92 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 09:53:19 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/10/30 14:59:33 by yazlaigi         ###   ########.fr       */
+/*   Created: 2024/11/01 12:21:15 by yazlaigi          #+#    #+#             */
+/*   Updated: 2024/11/02 12:04:00 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_count_words(char const *s, char c)
+static int	count_words(const char *s, char c)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	if (s[0] != c)
-		j = j + 1;
+	if (s == NULL)
+		return (0);
+	if (s[0] != c && s[0] != '\0')
+		j = 1;
 	while (s[i] != '\0')
 	{
 		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
-			j = j + 1;
+			j += 1;
 		i++;
 	}
 	return (j);
 }
 
-size_t	ft_word_len(char const *s, char c)
+static int	ft_word_len(const char *s, char c)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (s[i] != c && s[i] != '\0')
+	while (s[i] != '\0' && s[i] != c)
 		i++;
-	return (i); 
+	return (i);
+}
+
+static void	memmoryfree(char **a, int i)
+{
+	while (i > 0)
+		free(a[--i]);
+	free (a);
+}
+
+static char	*allocation(int size, const char *s)
+{
+	char	*a;
+	int		i;
+
+	a = malloc(size);
+	if (a == NULL)
+		return (NULL);
+	i = 0;
+	while (i < size - 1 && s[i] != '\0')
+	{
+		a[i] = s[i];
+		i++;
+	}
+	a[i] = '\0';
+	return (a);
 }
 
 char	**ft_split(char const *s, char c)
 {
+	int		words_num;
+	int		i;
 	char	**a;
-	size_t	words_number;
-	size_t	word_len;
-	size_t	i;
-	size_t	j;
 
 	if (!s)
 		return (NULL);
-	words_number = ft_count_words(s, c);
-	i = 0;
-	a = (char **)malloc((words_number + 1) * sizeof(char *));
+	words_num = count_words(s, c);
+	a = (char **)malloc((words_num + 1) * sizeof(char *));
 	if (a == NULL)
 		return (NULL);
-	while (i < words_number)
+	i = 0;
+	while (i < words_num)
 	{
-		while (*s == c)
+		while (*s == c && *s != '\0')
 			s++;
-		word_len = ft_word_len(s, c) + 1;
-		a[i] = malloc(word_len);
-		if (a[i] == NULL)
+		a[i] = allocation (ft_word_len(s, c) + 1, s);
+		if (a[i++] == NULL)
 		{
-			while (i > 0)
-			{
-				free(a[i - 1]);
-				i--;
-			}
-			free(a);
+			memmoryfree(a, --i);
 			return (NULL);
 		}
-		j = 0;
-		while (j < word_len)
-		{
-			a[i][j] = *s;
-			s++;
-			j++;
-		}
-		a[i][j] = '\0';
-		i++;
+		s = s + ft_word_len(s, c);
 	}
 	a[i] = NULL;
 	return (a);
