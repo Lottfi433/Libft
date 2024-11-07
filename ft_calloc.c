@@ -6,12 +6,11 @@
 /*   By: yazlaigi <yazlaigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:10:22 by yazlaigi          #+#    #+#             */
-/*   Updated: 2024/11/01 16:29:22 by yazlaigi         ###   ########.fr       */
+/*   Updated: 2024/11/04 09:24:59 by yazlaigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
 void	*ft_calloc(size_t count, size_t size)
 {
